@@ -1,9 +1,9 @@
+import logging
 from types import TracebackType
 from typing import Self
 from urllib.parse import quote
-import httpx
 
-import logging
+import httpx
 
 from delay_tracker.core.config import settings
 
@@ -42,4 +42,12 @@ class TimetablesClient:
         response.raise_for_status()
         logger.info(f"Retrieved station information for {station}")
         logger.debug(f"Response content: {response.text}")
+        return response.text
+
+    async def get_plan(self, station_eva: str, day: str, hour: str) -> str:
+        path = f"/plan/{quote(station_eva, safe='')}/{quote(day, safe='')}/{quote(hour, safe='')}"
+        response = await self._client.get(path)
+        response.raise_for_status()
+        logger.info("Retrieved plan information for %s", station_eva)
+        logger.debug("Response content: %s", response.text)
         return response.text
