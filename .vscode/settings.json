@@ -9,5 +9,6 @@
     }
   },
   "mypy-type-checker.cwd": "${workspaceFolder}/apps/api",
-  "mypy-type-checker.importStrategy": "fromEnvironment"
+  "mypy-type-checker.importStrategy": "fromEnvironment",
+  "python.analysis.extraPaths": ["${workspaceFolder}/apps/api/src"]
 }
