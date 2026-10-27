@@ -30,7 +30,10 @@ plugins = ["pydantic.mypy"]
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "UP", "B", "N"]
+
+[tool.ruff]
 line-length = 120
+
 
 [dependency-groups]
 dev = [
